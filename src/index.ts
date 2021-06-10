@@ -32,7 +32,7 @@ export const scene = new BABYLON.Scene(engine);
 const light = new BABYLON.HemisphericLight('light1', new BABYLON.Vector3(0, 1, 0), scene);
 
 // Setup a Zappar camera instead of one of Babylon's cameras
-export const camera = new ZapparBabylon.Camera(scene);
+export const camera = new ZapparBabylon.Camera('ZapparCamera', scene);
 
 // Request the necessary permission from the user
 ZapparBabylon.permissionRequestUI().then((granted) => {
@@ -41,7 +41,7 @@ ZapparBabylon.permissionRequestUI().then((granted) => {
 });
 
 const faceTracker = new ZapparBabylon.FaceTrackerLoader().load();
-const trackerTransformNode = new ZapparBabylon.FaceTrackerTransformNode(camera, faceTracker, scene);
+const trackerTransformNode = new ZapparBabylon.FaceTrackerTransformNode('tracker', camera, faceTracker, scene);
 
 trackerTransformNode.setEnabled(false);
 faceTracker.onVisible.bind(() => {
@@ -54,7 +54,7 @@ faceTracker.onNotVisible.bind(() => {
 const material = new BABYLON.StandardMaterial('mat', scene);
 material.diffuseTexture = new BABYLON.Texture(faceMeshTexture, scene);
 
-const faceMesh = new ZapparBabylon.FaceMeshGeometry(scene);
+const faceMesh = new ZapparBabylon.FaceMeshGeometry('mesh', scene);
 faceMesh.parent = trackerTransformNode;
 faceMesh.material = material;
 
