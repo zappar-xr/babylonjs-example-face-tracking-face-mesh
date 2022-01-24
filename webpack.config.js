@@ -23,7 +23,7 @@ module.exports = {
     }),
   ],
   devServer: {
-    contentBase: './dist/',
+    static: './dist/',
     historyApiFallback: true,
     https: true,
     host: '0.0.0.0',
