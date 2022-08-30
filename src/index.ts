@@ -2,9 +2,11 @@
 /* eslint-disable no-param-reassign */
 import * as BABYLON from 'babylonjs';
 import * as ZapparBabylon from '@zappar/zappar-babylonjs';
-import faceMeshTexture from '../assets/faceMeshTemplate.png';
+
+const faceMeshTexture = new URL('../assets/faceMeshTemplate.png', import.meta.url).href;
+
 import 'babylonjs-loaders';
-import './index.sass';
+import './index.css';
 
 // The SDK is supported on many different browsers, but there are some that
 // don't provide camera access. This function detects if the browser is supported
